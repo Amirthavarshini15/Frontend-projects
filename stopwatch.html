@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+   .sw{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(./download.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+    #title{
+        font-family:'Gill Sans';
+        font-weight: bold;
+        font-size: 50px;
+        color: darkturquoise;
+        text-shadow: 1px 1px grey;
+        position: absolute;
+        top: 180px;
+    
+    }
+    #timer{
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 40px;
+        color:rgb(223, 123, 90);
+    }
+    .box{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 25px;
+        border-radius: 5px;
+
+    }
+    #controls button{
+        margin: 10px;
+        padding: 15px;
+        box-shadow: 3px 3px rgb(125, 119, 119);
+        cursor:pointer;
+        
+    }
+    #start{
+       background-color: pink;
+       border: 1px solid white;
+        border-radius: 15px;
+    }
+    #start:hover{
+        background-color: hsl(350, 100%, 82%);
+    }
+    #stop{
+        background-color: rgb(131, 226, 239);
+        border: 1px solid white;
+
+        border-radius: 15px;
+    }
+    #stop:hover{
+        background-color:hsl(187, 77%, 65%);
+    }
+    #reset{
+        background-color: pink;
+        border: 1px solid white;
+        border-radius: 15px;
+    }
+    #reset:hover{
+        background-color: hsl(350, 100%, 82%);
+    }
+</style>
+<body>
+    <div class="sw" >
+        <div id="title">STOP WATCH</div>
+        <div class="box">
+            <div id="timer">00:00:00:00</div>
+            <div id="controls">
+                <button id="start" onclick="start()">START</button>
+                <button id="stop" onclick="stop()">STOP</button>
+                <button id="reset" onclick="reset()">RESET</button>
+             </div>
+        </div>
+    </div>
+<script>
+    t=0;
+    flag=false;
+    const timer=document.getElementById("timer");
+    function start(){
+        if(!flag)
+        ti=setInterval(update,10);
+    flag=true;
+
+    }
+    function stop(){
+        clearInterval(ti);
+    }
+    function reset(){
+        t=0;
+        timer.textContent="00:00:00:00";
+        clearInterval(ti);
+        flag=true;
+        
+    }
+    function update(){
+        t=t+10;
+        h=String(Math.floor(t/(1000*60*60))).padStart(2,0);
+        m=String(Math.floor(t/(1000*60)%60)).padStart(2,0);
+        s=String(Math.floor(t/(1000)%60)).padStart(2,0);
+        ms=String(Math.floor(t%1000)/10).padStart(2,0);
+        timer.textContent=`${h}:${m}:${s}:${ms}`;
+    }
+
+</script>
+</body>
+</html>

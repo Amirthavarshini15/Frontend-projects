@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   *{
+   margin: 0;
+
+   }
+    .parent{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-image: url("https://t3.ftcdn.net/jpg/01/81/33/44/360_F_181334456_izy7WhJzEvkJzZrQWyBHmOCchKViuAGS.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    #clock{
+        font-family: monospace;
+        font-size: 90px;
+        font-weight:lighter;
+        color: rgb(91, 219, 219);
+        backdrop-filter: blur(5px);
+    }
+</style>
+<body>
+    <div class="parent">
+        <div id="clock">00:00:00</div>
+    </div>
+    <script>
+        function time(){
+            const now=new Date();
+            let hour=now.getHours();
+            let meridiem=hour>=12?"PM":"AM";
+            hour=hour%12||12;
+            hour=hour.toString().padStart(2,0);
+            const min=now.getMinutes().toString().padStart(2,0);
+            const sec=now.getSeconds().toString().padStart(2,0);
+            const milisec=Math.floor(now.getMilliseconds()/10).toString().padStart(2,0);
+            const Time=`${hour}:${min}:${sec}:${milisec} ${meridiem}`;
+            document.getElementById("clock").textContent=Time;
+        } 
+        setInterval(time,10);
+        time();
+    </script>
+</body>
+</html>

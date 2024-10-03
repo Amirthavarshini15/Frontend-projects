@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   body{
+    background-image: url(./frenzo/1600w-GyLQ4rd9Hig.webp);
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+   }
+    #game{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     
+    }
+     button{
+        border: 1px solid;
+        border: none;
+        cursor: pointer;
+        border-radius: 250px ;
+        padding: 10px;
+        height: 130px;
+        width: 130px;
+        margin: 15px;
+        background-color: hsl(350, 100%, 88%);
+        transition: all 1500ms ease;
+        
+    }
+     button:hover{
+        background-color: hsl(350, 100%, 78%);
+        scale: 1.3;
+        
+    }
+    button:focus{
+        transform: rotate(360deg);
+        background-color: hsl(350, 100%, 78%);
+        box-shadow: 2px 2px 5px rgb(94, 55, 61);
+        
+    }
+    #res{
+        font-size: 30px;
+    }
+    
+
+</style>
+<body>
+    <div id="game">
+        <h1 style="color: rgb(89, 173, 172); text-shadow: 2px 1px pink; " >Rock Paper Scissor</h1>
+        <div id="buttons">
+            <button id="r" style="font-size: 50px;" onclick="playgame('Rock')">🪨</button>
+            <button id="p" style="font-size: 50px;" onclick="playgame('Paper')">📜</button>
+            <button id="s" style="font-size: 50px;" onclick="playgame('Scissor')">✂️</button>
+        </div>
+        <DIv>
+           <h4 id="user" style="text-align: center;">USER :</h4>
+           <h4 id="com" style="text-align: center;">COMPUTER :</h4>
+           <h4 id="res">RESULT :</h4>
+        </DIv>
+        
+    <script>
+        const choices=["Rock","Paper","Scissor"];
+        const buttons=document.getElementById("buttons");
+        const user=document.getElementById("user");
+        const com=document.getElementById("com");
+        const result=document.getElementById("res");
+        function playgame(choice) {
+            const computer=Math.floor(Math.random()*3);
+            user.textContent= `USER : ${choice}`;
+            com.textContent=`COMPUTER : ${choices[computer]}`
+            if(choice=="Rock")
+        {
+                
+                 if(choices[computer]=="Rock")
+                 {
+                 result.textContent="Its a Tie";
+                 }
+                else if(choices[computer]=="Scissor")
+                result.textContent="You Won!";
+                else
+                result.textContent="Computer Won!"
+        }
+        else if(choice=="Scissor")
+        {
+            if(choices[computer]=="Scissor")
+                result.textContent="Its a Tie!";
+            else if(choices[computer]=="Paper")
+                result.textContent="You Won!";
+            else
+                result.textContent="Computer Won!"
+        }
+        else
+        {
+            if(choices[computer]=="Paper")
+                result.textContent="Its a Tie!";
+            else if(choices[computer]=="Rock")
+                result.textContent="You Won!";
+            else
+                result.textContent="Computer Won!"
+        }
+            
+        }
+    </script>
+            
+        </button>
+    </div>
+</body>
+</html>
